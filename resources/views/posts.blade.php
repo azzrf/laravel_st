@@ -25,36 +25,39 @@
 
             </div>
         </div>
+
+        <div class="container">
+            <div class="row">
+                @foreach ($posts->skip(1) as $post)
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <div class="position-absolute bg-dark px-3 py-2 m-2 text-white">
+                                <a href="/categories/{{ $post->category->slug }}" class="text-white text-decoration-none">
+                                    {{ $post->category->nama }}</a>
+                            </div>
+                            <img src="https://source.unsplash.com/500x400/?{{ $post->category->nama }}"
+                                class="card-img-top" alt="{{ $post->category->nama }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $post->title }}</h5>
+                                <p>
+                                    <small class="text-body-secondary">
+                                        By. <a href="/authors/{{ $post->author->username }}"
+                                            class="text-decoration-none">{{ $post->author->name }}</a>
+                                        {{ $post->created_at->diffForHumans() }}
+                                    </small>
+                                </p>
+
+                                <p class="card-text">{{ $post->excerpt }}</p>
+                                <a href="/posts/{{ $post->slug }}" class="text-decoration-none btn btn-primary">Read
+                                    more</a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
     @else
         <p class="text-center fs-4">No Posts Found.</p>
     @endif
 
-    <div class="container">
-        <div class="row">
-            @foreach ($posts->skip(1) as $post)
-                <div class="col-md-4 mb-3">
-                    <div class="card">
-                        <div class="position-absolute bg-dark px-3 py-2 m-2 text-white">
-                            <a href="/categories/{{ $post->category->slug }}" class="text-white text-decoration-none"> {{ $post->category->nama }}</a>
-                        </div>
-                        <img src="https://source.unsplash.com/500x400/?{{ $post->category->nama }}" class="card-img-top"
-                            alt="{{ $post->category->nama }}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $post->title }}</h5>
-                            <p>
-                                <small class="text-body-secondary">
-                                    By. <a href="/authors/{{ $post->author->username }}"
-                                        class="text-decoration-none">{{ $post->author->name }}</a>
-                                    {{ $post->created_at->diffForHumans() }}
-                                </small>
-                            </p>
-
-                            <p class="card-text">{{ $post->excerpt }}</p>
-                            <a href="/posts/{{ $post->slug }}" class="text-decoration-none btn btn-primary">Read more</a>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div>
 @endsection

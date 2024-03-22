@@ -18,8 +18,6 @@ class DatabaseSeeder extends Seeder
         User::factory(5)->create();
         Post::factory(20)->create();
 
-
-
         // User::create([
         //     'name' => 'Fairuzizuan',
         //     'email' => 'fairuz@example.com',
@@ -40,6 +38,11 @@ class DatabaseSeeder extends Seeder
         Category::create([
             'nama' => 'Web Tech',
             'slug' => 'web-tech'
+        ]);
+
+        Category::create([
+            'nama' => 'Personal',
+            'slug' => 'personal'
         ]);
 
         // Post::create([

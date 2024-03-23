@@ -16,14 +16,10 @@
 
                 <article class="my-3 fs-6">
                     {!! $post->body !!}
-
-                </article>
                 </article>
 
                 <a href="/posts" class="d-block mt-3">Back to Posts</a>
             </div>
         </div>
     </div>
-
-    <article>
-    @endsection
+@endsection
